@@ -29,7 +29,7 @@ class TrackingService(
     fun trackEvent(eventName: String) {
         val databaseEntity = trackingRepository.findByEventName(eventName)
 
-        trackingRepository.save(TrackingEntity(eventName, databaseEntity?.count ?: 1))
+        trackingRepository.save(TrackingEntity(eventName, (databaseEntity?.count ?: 0) + 1))
     }
 
 }
