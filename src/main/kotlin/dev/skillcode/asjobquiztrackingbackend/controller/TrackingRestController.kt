@@ -5,6 +5,7 @@ import dev.skillcode.asjobquiztrackingbackend.model.TrackingModel
 import dev.skillcode.asjobquiztrackingbackend.service.TrackingService
 import org.springframework.web.bind.annotation.*
 
+@CrossOrigin
 @RestController()
 @RequestMapping("/api/tracking")
 class TrackingRestController(
