@@ -26,8 +26,8 @@ example response:
 }
 ```
 
-**PUT /api/tracking**<br>
-example request:
+**POST /api/tracking**<br>
+example request body:
 
 ```
 {

@@ -23,7 +23,7 @@ class TrackingRestController(
         return trackingService.getTrackingStatsForEvent(eventName)
     }
 
-    @PutMapping
+    @PostMapping
     fun trackEvent(@RequestBody request: TrackEventRequest) {
         trackingService.trackEvent(request.eventName)
     }
