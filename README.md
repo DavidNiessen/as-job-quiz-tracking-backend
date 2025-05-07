@@ -20,10 +20,10 @@ example response:
 example response:
 
 ```
-  {
-    eventName: EVENT_NAME
-    count: 1
-  }
+{
+  eventName: EVENT_NAME
+  count: 1
+}
 ```
 
 **PUT /api/tracking**<br>
