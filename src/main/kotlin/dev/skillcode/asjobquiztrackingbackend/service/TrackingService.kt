@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service
 class TrackingService(
     private val trackingRepository: TrackingRepository,
     private val toModelConverter: TrackingEntityToModelConverter,
+    private val whitelistService: EventWhitelistService,
 ) {
 
     fun getAllTrackingStats(): List<TrackingModel> {
@@ -27,6 +28,10 @@ class TrackingService(
     }
 
     fun trackEvent(eventName: String) {
+        if (eventName.isBlank() || !whitelistService.isAllowed(eventName)) {
+            throw EventNameNotFoundException(eventName)
+        }
+
         val databaseEntity = trackingRepository.findByEventName(eventName)
 
         trackingRepository.save(TrackingEntity(eventName, (databaseEntity?.count ?: 0) + 1))
