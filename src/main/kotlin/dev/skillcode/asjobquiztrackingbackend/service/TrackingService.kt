@@ -2,6 +2,7 @@ package dev.skillcode.asjobquiztrackingbackend.service
 
 import dev.skillcode.asjobquiztrackingbackend.converter.TrackingEntityToModelConverter
 import dev.skillcode.asjobquiztrackingbackend.entity.TrackingEntity
+import dev.skillcode.asjobquiztrackingbackend.exception.exceptions.EventNameNotAllowedException
 import dev.skillcode.asjobquiztrackingbackend.exception.exceptions.EventNameNotFoundException
 import dev.skillcode.asjobquiztrackingbackend.model.TrackingModel
 import dev.skillcode.asjobquiztrackingbackend.repository.TrackingRepository
@@ -29,7 +30,7 @@ class TrackingService(
 
     fun trackEvent(eventName: String) {
         if (eventName.isBlank() || !whitelistService.isAllowed(eventName)) {
-            throw EventNameNotFoundException(eventName)
+            throw EventNameNotAllowedException(eventName)
         }
 
         val databaseEntity = trackingRepository.findByEventName(eventName)
